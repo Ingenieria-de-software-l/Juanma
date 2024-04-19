@@ -1,15 +1,17 @@
 import express from 'express'
-import { PORT } from './config'
-import MovieRouter from 'routes/movie.routes.js'
-import { connectDB } from './db'
+import { PORT } from './config.js'
+import MovieRouter from './routes/movie.routes.js'
+import UserRouter from './routes/user.routes.js'
+import { connectDB } from './db.js'
 
 const app = express()
 
 //routes
-epp.use('/api', MovieRouter)
+app.use('/api', MovieRouter)
+app.use('/api', UserRouter)
 
 
-async function MediaDeviceInfo(){
+async function main(){
     try{
         await connectDB();
         app.listen(PORT, () => {
