@@ -20,6 +20,11 @@ const MovieSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
+    author:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
+    },
     date: {
         type: Date,
         required: true
