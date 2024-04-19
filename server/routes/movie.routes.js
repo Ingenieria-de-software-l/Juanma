@@ -16,11 +16,12 @@ router.get("/getmovie", async (req,res) => {
 
 router.post("/createMovie", async (req, res) => {
     try {
-        const { name, description, members, date } = req.body;
+        const { name, description, image, members, date } = req.body;
 
         const newMovie = new Movie({
             name,
             description,
+            image,
             members,
             date
         });
@@ -33,11 +34,12 @@ router.post("/createMovie", async (req, res) => {
 
 router.put("/updateMovie", async (req, res) => {
     try{
-        const { id, name, description, members, date } = req.body;
+        const { id, name, description, image, members, date } = req.body;
         
         const movieFound = await Movie.findByIdAndUpdate(id, {
             name,
             description,
+            image,
             members,
             date
         });

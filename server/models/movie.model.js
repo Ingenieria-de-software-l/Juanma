@@ -11,6 +11,11 @@ const MovieSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    image: {
+        type: String,
+        unique: true,
+        required: true
+    },
     members: {
         type: Array,
         required: true
