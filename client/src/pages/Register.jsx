@@ -15,11 +15,12 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(username)
         signup({username, email, password});
     }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         Username:
         <input type="text" name="username" placeholder="Username" value={username} onChange={e => setUSername(e.target.value)}/>
@@ -32,7 +33,7 @@ function Register() {
         Password:
         <input type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
       </label>
-      <input type="submit" value="Register" onSubmit={handleSubmit} />
+      <input type="submit" value="Register"  />
     </form>
   )
 }

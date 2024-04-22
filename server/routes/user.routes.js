@@ -11,7 +11,7 @@ router.put("/updateUser", updateUser);
 
 router.delete("/deleteUser", deleteUser);
 
-router.post('login', login)
+router.post('/login', login)
 
 router.post('/verify', verifyToken)
 

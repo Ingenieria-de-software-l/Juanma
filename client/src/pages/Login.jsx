@@ -19,7 +19,7 @@ function Login() {
     }
 
     return (
-      <form>
+      <form onSubmit={handleLogin}>
         <label>
           Username:
           <input type="text" name="username" placeholder="Username" value={username} onChange={e => setUSername(e.target.value)}/>
@@ -29,7 +29,7 @@ function Login() {
           <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
         </label>
         <Link to={'/register'}><h4>¿No tienes una cuenta? Registrate</h4></Link>
-        <input type="submit" value="Login" onSubmit={handleLogin}/>
+        <input type="submit" value="Login" />
       </form>
     )
   }
