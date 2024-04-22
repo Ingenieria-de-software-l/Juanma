@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
+import { getMoviesByUser } from "../api/movies"
+import { useAuth } from "../context/authContext"
 import NavBar from "../components/NavBar"
 import Movie from "../components/Movie"
-import { getAllMovies } from "../api/movies"
 
 
-function Home() {
+function MyMovie() {
   const [ movies, setMovies ] = useState([])
+  const { user } = useAuth()
 
   useEffect(() => {
-    handleSetMovies()
+    handleMovies()
   }, [])
 
-  const handleSetMovies = async () => {
-    const { data } = await getAllMovies()
+  const handleMovies= async () => {
+    const { data } = await getMoviesByUser(user?.id)
     setMovies(data)
   }
 
@@ -23,9 +25,9 @@ function Home() {
         <h1>Movies</h1>
         <div>
           <ul>
-            {movies?.map((movie) => (
+            {movies ? movies.map((movie) => (
               <Movie key={movie.id} movie={movie} />
-            ))}
+            )) : <h2>No tienes peliculas</h2>}
           </ul>
         </div>
       </main>
@@ -33,4 +35,4 @@ function Home() {
   )
 }
 
-export default Home
+export default MyMovie

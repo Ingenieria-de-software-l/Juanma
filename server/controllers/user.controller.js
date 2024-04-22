@@ -1,5 +1,7 @@
 import User from "../models/user.model.js";
 import { createAccessToken } from '../libs/jwt.js'
+import { JWT_SECRET } from "../config.js";
+import jwt from 'jsonwebtoken'
 
 export const getUser = async (req,res) => {
     try{
