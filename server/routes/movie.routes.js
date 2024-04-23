@@ -1,26 +1,73 @@
 import { Router } from "express";
-import Movie from "../models/movie.model";
+import Movie from "../models/movie.model.js";
 
 const router = Router();
 
-router.get("/getmovie",(req,res) => {
-    const { id } = req.body;
-    const movieFound = Movie.findById(id);
-
-    return res.status(200).json(movieFound)
+router.get("/getAllMovies", async (req,res) => {
+    try{
+        const movies = await Movie.find().populate("author");
+        return res.status(200).json(movies)
+    }catch(error){
+        console.log(error);
+    }
 })
 
-router.post("/createMovie", (req, res) => {
-    const { name, description, members, date } = req.body;
+router.post("/getMoviesByUser", async (req,res) => {
+    try{
+        const { author } = req.body;
+        const movieFound = await Movie.find({author});
 
+        return res.status(200).json(movieFound)
+    }catch(error){
+        console.log(error);
+    }
+})
+
+router.post("/createMovie", async (req, res) => {
+    try {
+        const { name, description, image, members, author, date } = req.body;
+
+        const newMovie = new Movie({
+            name,
+            description,
+            image,
+            members,
+            author,
+            date
+        });
+        await newMovie.save();
+        return res.status(200).json(newMovie);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
-router.put("/updateMovie", (req, res) => {
-    const { id } = req.body;
+router.put("/updateMovie", async (req, res) => {
+    try{
+        const { id, name, description, image, members, author, date } = req.body;
+        
+        const movieFound = await Movie.findByIdAndUpdate(id, {
+            name,
+            description,
+            image,
+            members,
+            author,
+            date
+        });
+        return res.status(200).json(movieFound);
+    }catch (error){
+        console.log(error);
+    }
 });
 
-router.delete("/deleteMovie", (req, res) => {
-    const { id } = req.body;
+router.delete("/deleteMovie", async (req, res) => {
+    try {
+        const { id } = req.body;
+        const movieFound = await Movie.findByIdAndDelete(id);
+        return res.status(200).json(movieFound);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 export default router

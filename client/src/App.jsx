@@ -1,16 +1,25 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Moviie from './pages/Movie'
+import Login from './pages/Login'
+import { AuthProvider } from './context/authContext'
+import Register from './pages/Register'
+import MyMovies from './pages/MyMovies'
+import CreateMovie from './pages/CreateMovie'
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} ></Route>
-        <Route path='/movie/:id' element={<Moviie />} ></Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} ></Route>
+          <Route path='/createMovie' element={<CreateMovie />} ></Route>
+          <Route path='/login' element={<Login />} ></Route>
+          <Route path='/register' element={<Register />} ></Route>
+          <Route path='/movies/:user' element={<MyMovies />} ></Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
