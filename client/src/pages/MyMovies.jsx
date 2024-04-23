@@ -3,6 +3,8 @@ import { getMoviesByUser } from "../api/movies"
 import { useAuth } from "../context/authContext"
 import NavBar from "../components/NavBar"
 import Movie from "../components/Movie"
+import '../style/MyMovies.css'
+import { Link } from "react-router-dom"
 
 
 function MyMovie() {
@@ -24,12 +26,17 @@ function MyMovie() {
       <main>
         <h1>Movies</h1>
         <div>
-          <ul>
-            {movies ? movies.map((movie) => (
-              <Movie key={movie.id} movie={movie} />
-            )) : <h2>No tienes peliculas</h2>}
-          </ul>
+          {
+            movies.length > 0 ? 
+            <ul>
+            { movies.map((movie) => (
+                <Movie key={movie.id} movie={movie} />
+              )) }
+          </ul> 
+          : <h2>No tienes peliculas</h2>
+          }
         </div>
+        <Link to={'/createMovie'}><button>+</button></Link>
       </main>
     </>
   )

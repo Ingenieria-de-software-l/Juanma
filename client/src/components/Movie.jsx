@@ -1,23 +1,27 @@
+import { useEffect } from "react"
 import PropTypes from 'prop-types';
 
-function Movie(movie) {
-  const {name, members, author, description, image, date} = movie
+function Movie( name) {
+  // const { members, author, description, image, date} = movie
+  // useEffect(() => {
+  //   console.log(movie)
+  // })
   return (
-    <div>
-      <h2>{name}</h2>
-      <div>
+    <li>
+      <h2>Titulo:{name}</h2>
+      {/* <div>
         <img src={image} alt=""/>
       </div>
       <p>{description}</p>
-      <p>Elenco:{members.join(", ")}</p>
+      <p>Elenco:{members?.join(", ")}</p>
       <p>Fecha de estreno:{date}</p>
-      <p>Publicado por:{author}</p>
-    </div>
+      <p>Publicado por:{author?.username}</p> */}
+    </li>
   )
 }
 
 Movie.propTypes = {
-  movie: PropTypes.object.isRequired
+  name: PropTypes.string
 };
 
 export default Movie

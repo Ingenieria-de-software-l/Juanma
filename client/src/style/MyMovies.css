@@ -1,0 +1,11 @@
+button{
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border: none;
+
+    /* position: absolute;
+    bottom: 20px;
+    right: 20px; */
+}

@@ -13,6 +13,7 @@ function Home() {
 
   const handleSetMovies = async () => {
     const { data } = await getAllMovies()
+    console.log(data)
     setMovies(data)
   }
 
@@ -23,8 +24,8 @@ function Home() {
         <h1>Movies</h1>
         <div>
           <ul>
-            {movies?.map((movie) => (
-              <Movie key={movie.id} movie={movie} />
+            {movies.length>0 && movies.map((movie) => (
+              <Movie key={movie._id} name={movie.name} />
             ))}
           </ul>
         </div>

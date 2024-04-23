@@ -5,16 +5,14 @@ const router = Router();
 
 router.get("/getAllMovies", async (req,res) => {
     try{
-        const { id } = req.body;
-        const movieFound = await Movie.findById(id);
-
-        return res.status(200).json(movieFound)
+        const movies = await Movie.find().populate("author");
+        return res.status(200).json(movies)
     }catch(error){
         console.log(error);
     }
 })
 
-router.get("/getMoviesByUser", async (req,res) => {
+router.post("/getMoviesByUser", async (req,res) => {
     try{
         const { author } = req.body;
         const movieFound = await Movie.find({author});

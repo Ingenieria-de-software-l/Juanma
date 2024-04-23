@@ -14,7 +14,7 @@ function NavBar() {
             { user ? (
                 <>
                     <li><Link to={`/movies/${user.username}`}>Mis Peliculas</Link></li>
-                    <li><Link to={'/login'}>Logout</Link></li>
+                    <li><Link to={'/'}>Logout</Link></li>
                 </>
             ) :
             <li><Link to={'/login'}>Login</Link></li> }
