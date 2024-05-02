@@ -18,6 +18,7 @@ function CreateMovie() {
             reader.readAsDataURL(file)
         }else{
             alert('El archivo no es una imagen')
+            setMovie({...movie, image: null})
             return
         }
     }
@@ -29,6 +30,11 @@ function CreateMovie() {
             console.log(movie)
             const movieCreated = await createMovie({...movie, author: user.id})
             console.log(movieCreated)
+
+            if(movieCreated) {
+                alert('Pelicula creada con exito')
+                setMovie({name: '', description: '', date: null, image: null, members: ''})
+            }
         }catch(error){
             console.log(error)
         }
@@ -44,11 +50,11 @@ function CreateMovie() {
             <textarea placeholder="Miembros" value={movie.members} onChange={e => setMovie({...movie, members: e.target.value})}></textarea>
             <label>
                 Fecha de publicacion
-                <input type="date" onChange={e => setMovie({...movie, date: e.target.value})}/>
+                <input type="date" value={movie.date} onChange={e => setMovie({...movie, date: e.target.value})}/>
             </label>
             <label>
                 image
-                <input type="file" placeholder="image" onChange={handleImage}/>
+                <input type="file" placeholder="poster" value={movie.image} onChange={handleImage}/>
             </label>
             <img src={movie.image} />
             <input type="submit" value="Crear Pelicula"/>

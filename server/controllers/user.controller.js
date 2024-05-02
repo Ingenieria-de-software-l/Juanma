@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import Movie from "../models/movie.model.js";
 import { createAccessToken } from '../libs/jwt.js'
 import { JWT_SECRET } from "../config.js";
 import jwt from 'jsonwebtoken'
@@ -50,6 +51,13 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
     try {
         const { id } = req.body;
+
+        const moviesFound = await Movie.find({author: id});
+
+        if(moviesFound.length > 0){
+            return res.status(400).json({message: "No se puede eliminar el usuario porque tiene peliculas asociadas."})
+        }
+
         const UserFound = await User.findByIdAndDelete(id);
         return res.status(200).json(UserFound);
     } catch (error) {

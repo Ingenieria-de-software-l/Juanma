@@ -24,9 +24,9 @@ function Home() {
         <h1>Movies</h1>
         <div>
           <ul>
-            {movies.length>0 && movies.map((movie) => (
+            {movies.length>0 ? movies.map((movie) => (
               <Movie key={movie._id} name={movie.name} />
-            ))}
+            )) : <p>No hay peliculas aún</p>}
           </ul>
         </div>
       </main>
