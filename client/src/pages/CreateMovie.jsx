@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { createMovie } from "../api/movies"
 import { useAuth } from "../context/authContext"
+import { useNavigate } from 'react-router-dom'
 import '../style/CreateMovie.css'
 
 function CreateMovie() {
     const { user } = useAuth()
     const [ movie, setMovie ] = useState({name: '', description: '', date: '', image: '', members: ''})
+    const navigate = useNavigate()
 
     const handleImage = e => {
         const file = e.target.files[0]
@@ -34,6 +36,7 @@ function CreateMovie() {
             if(movieCreated) {
                 alert('Pelicula creada con exito')
                 setMovie({name: '', description: '', date: null, image: null, members: ''})
+                navigate(`/movies/${user.username}`)    
             }
         }catch(error){
             console.log(error)

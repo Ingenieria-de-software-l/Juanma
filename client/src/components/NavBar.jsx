@@ -9,7 +9,8 @@ function NavBar() {
 
   return (
     <nav>
-        <span>MovieAPI</span>
+        <Link to='/'><span>MovieAPI</span></Link>
+        
         <ul>
             { user ? (
                 <>

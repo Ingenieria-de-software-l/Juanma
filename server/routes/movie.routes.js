@@ -14,8 +14,8 @@ router.get("/getAllMovies", async (req,res) => {
 
 router.post("/getMoviesByUser", async (req,res) => {
     try{
-        const { author } = req.body;
-        const movieFound = await Movie.find({author});
+        const { user } = req.body;
+        const movieFound = await Movie.find({author: user});
 
         return res.status(200).json(movieFound)
     }catch(error){

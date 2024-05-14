@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
 import Movie from "../components/Movie"
 import { getAllMovies } from "../api/movies"
+import '../style/Home.css'
 
 
 function Home() {
@@ -13,7 +14,6 @@ function Home() {
 
   const handleSetMovies = async () => {
     const { data } = await getAllMovies()
-    console.log(data)
     setMovies(data)
   }
 
@@ -24,8 +24,8 @@ function Home() {
         <h1>Movies</h1>
         <div>
           <ul>
-            {movies.length>0 ? movies.map((movie) => (
-              <Movie key={movie._id} name={movie.name} />
+            {movies ? movies.map((movie) => (
+              <Movie key={movie._id} {...movie} />
             )) : <p>No hay peliculas aún</p>}
           </ul>
         </div>

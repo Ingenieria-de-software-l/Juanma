@@ -16,7 +16,9 @@ function MyMovie() {
   }, [])
 
   const handleMovies= async () => {
-    const { data } = await getMoviesByUser(user?.id)
+    console.log(user)
+    const { data } = await getMoviesByUser(user.id)
+    console.log(data)
     setMovies(data)
   }
 
@@ -30,7 +32,7 @@ function MyMovie() {
             movies.length > 0 ? 
             <ul>
             { movies.map((movie) => (
-                <Movie key={movie.id} movie={movie} />
+                <Movie key={movie._id} {...movie} />
               )) }
           </ul> 
           : <h2>No tienes peliculas</h2>
