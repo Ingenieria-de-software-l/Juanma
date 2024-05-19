@@ -10,6 +10,8 @@ nav ul{
 }
 
 nav ul li{
+    cursor: pointer;
     margin-left: 15px;
     list-style-type: none;
+    color: #41adff
 }

@@ -97,3 +97,7 @@ export const verifyToken = (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
+
+export const logout = (req,res) => {
+    res.status(200).json({ message: 'Sesión cerrada' })
+}

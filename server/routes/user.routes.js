@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUser, deleteUser, getUser, login, updateUser, verifyToken } from "../controllers/user.controller.js";
+import { createUser, deleteUser, getUser, login, updateUser, verifyToken, logout } from "../controllers/user.controller.js";
 
 const router = Router();
 
@@ -14,6 +14,8 @@ router.delete("/deleteUser", deleteUser);
 router.post('/login', login)
 
 router.post('/verify', verifyToken)
+
+router.get('/logout', logout)
 
 export default router
 

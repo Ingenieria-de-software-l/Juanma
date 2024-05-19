@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import '../style/Movie.css'
 
 function Movie( movie) {
   const { name, members, author, description, image, date} = movie
