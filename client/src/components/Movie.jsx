@@ -1,19 +1,30 @@
 import PropTypes from 'prop-types';
 import '../style/Movie.css'
 
-function Movie( movie) {
-  const { name, members, author, description, image, date} = movie
+function Movie( movie ) {
+  const { name, members, author, description, image, date, myMovies} = movie
   
   return (
     <li>
-      <h1>Publicado por:{author?.username}</h1>
-      <h2>Titulo:{name}</h2>
+      <header className='btns'>
+        <h1>👤{author?.username}</h1>
+        {
+          myMovies && (
+            <div>
+              <button className="btn-edit">✏️</button>
+              <button className="btn-delete">-</button>
+          </div>
+          )
+        }
+      </header>
+      
+      <h2>{name}</h2>
       <div>
         <img src={image} alt=""/>
       </div>
       <p>{description}</p>
       <p>Elenco:{members?.join(", ")}</p>
-      <p>Fecha de estreno:{date}</p>
+      <p>Fecha de estreno:{date} </p>
     </li>
   )
 }

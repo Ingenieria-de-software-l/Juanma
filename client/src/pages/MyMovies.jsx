@@ -32,7 +32,7 @@ function MyMovie() {
             movies.length > 0 ? 
             <ul>
             { movies.map((movie) => (
-                <Movie key={movie._id} {...movie} />
+                <Movie key={movie._id} {...movie} myMovies={true}/>
               )) }
           </ul> 
           : <h2>No tienes peliculas</h2>

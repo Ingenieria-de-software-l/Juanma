@@ -5,8 +5,33 @@ li{
     justify-content: center;
     outline: 1px white solid;
     padding: 10px;
+    padding-top: 30px;
     margin: 10px;
     list-style-type: none;
     border-radius: 10px;
     background-color: rgb(0, 0, 0);
+    position: relative;
+}
+
+button{
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+.btn-delete{
+    background-color: red;
+}
+
+.btn-edit{
+    background-color: blue;
+}
+
+.btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
