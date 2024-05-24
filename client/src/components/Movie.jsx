@@ -1,8 +1,18 @@
 import PropTypes from 'prop-types';
 import '../style/Movie.css'
+import { deleteMovie } from '../api/movies';
+import { useEffect } from 'react';
 
 function Movie( movie ) {
   const { name, members, author, description, image, date, myMovies} = movie
+  useEffect(() => {
+    console.log(movie._id)
+  })
+
+  const handleDelete = async () => {
+    const deletedMovie = await deleteMovie(movie._id)
+    alert(`La pelidula ${deletedMovie.name} fue eliminada correctamente`)
+  }
   
   return (
     <li>
@@ -11,8 +21,8 @@ function Movie( movie ) {
         {
           myMovies && (
             <div>
-              <button className="btn-edit">✏️</button>
-              <button className="btn-delete">-</button>
+              <button className="btn-edit" onClick={handleDelete}>✏️</button>
+              <button className="btn-delete" onClick={handleDelete}>-</button>
           </div>
           )
         }
