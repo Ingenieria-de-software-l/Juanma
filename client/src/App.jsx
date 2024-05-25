@@ -5,6 +5,7 @@ import { AuthProvider } from './context/authContext'
 import Register from './pages/Register'
 import MyMovies from './pages/MyMovies'
 import CreateMovie from './pages/CreateMovie'
+import UpdateMovie from './pages/UpdateMovie'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} ></Route>
           <Route path='/createMovie' element={<CreateMovie />} ></Route>
+          <Route path='/updateMovie/:id' element={<UpdateMovie />} ></Route>
           <Route path='/login' element={<Login />} ></Route>
           <Route path='/register' element={<Register />} ></Route>
           <Route path='/movies/:user' element={<MyMovies />} ></Route>

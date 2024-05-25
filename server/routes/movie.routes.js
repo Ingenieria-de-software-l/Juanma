@@ -3,6 +3,16 @@ import Movie from "../models/movie.model.js";
 
 const router = Router();
 
+router.get("/getMovie/:id", async (req,res) => {
+    try{
+        const { id } = req.params;
+        const movieFound = await Movie.findById(id).populate("author");
+        return res.status(200).json(movieFound)
+    }catch(error){
+        console.log(error);
+    }
+})
+
 router.get("/getAllMovies", async (req,res) => {
     try{
         const movies = await Movie.find().populate("author");

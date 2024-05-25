@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import '../style/Movie.css'
 import { deleteMovie } from '../api/movies';
 import { useEffect } from 'react';
+import { Link } from "react-router-dom"
 
 function Movie( movie ) {
   const { name, members, author, description, image, date, myMovies} = movie
@@ -22,7 +23,7 @@ function Movie( movie ) {
         {
           myMovies && (
             <div>
-              <button className="btn-edit" onClick={handleDelete}>✏️</button>
+              <button className="btn-edit"><Link to={`/updateMovie/${movie._id}`} >✏️</Link></button>
               <button className="btn-delete" onClick={handleDelete}>-</button>
           </div>
           )
