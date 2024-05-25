@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from '../context/authContext'
 import { Link, useNavigate } from 'react-router-dom'
+import '../style/Login.css'
 
 function Login() {
     const [ username, setUSername ] = useState('');
@@ -19,18 +20,22 @@ function Login() {
     }
 
     return (
-      <form onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input type="text" name="username" placeholder="Username" value={username} onChange={e => setUSername(e.target.value)}/>
-        </label>
-        <label>
-          Password:
-          <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <Link to={'/register'}><h4>¿No tienes una cuenta? Registrate</h4></Link>
-        <input type="submit" value="Login" />
-      </form>
+      <>
+        <form onSubmit={handleLogin}>
+          <div className="container-form">
+            <label>
+              Username
+              <input type="text" name="username" placeholder="Username" value={username} onChange={e => setUSername(e.target.value)}/>
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" placeholder="*****" value={password} onChange={e => setPassword(e.target.value)} />
+            </label>
+            <Link to={'/register'}><h4>¿No tienes una cuenta? Registrate</h4></Link>
+            <input type="submit" value="Login" />
+          </div>
+        </form>
+      </>
     )
   }
   

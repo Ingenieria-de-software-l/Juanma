@@ -18,7 +18,7 @@ function Home() {
   }
 
   return (
-    <>
+    <div className="container">
       <NavBar />
       <main>
         <h1>Movies</h1>
@@ -30,7 +30,7 @@ function Home() {
           </ul>
         </div>
       </main>
-    </>
+    </div>
   )
 }
 

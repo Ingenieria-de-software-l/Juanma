@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from '../context/authContext'
 import { useNavigate } from 'react-router-dom'
+import '../style/Login.css'
 
 function Register() {
     const [ username, setUSername ] = useState('');
@@ -21,19 +22,21 @@ function Register() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" name="username" placeholder="Username" value={username} onChange={e => setUSername(e.target.value)}/>
-      </label>
-      <label>
-        Email:
-        <input type="email" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
-      </label>
-      <label>
-        Password:
-        <input type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
-      </label>
-      <input type="submit" value="Register"  />
+      <div className="container-form">
+        <label>
+          Username:
+          <input type="text" name="username" placeholder="Username" value={username} onChange={e => setUSername(e.target.value)}/>
+        </label>
+        <label>
+          Email:
+          <input type="email" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+        </label>
+        <label>
+          Password:
+          <input type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+        </label>
+        <input type="submit" value="Register"  />
+      </div>
     </form>
   )
 }
