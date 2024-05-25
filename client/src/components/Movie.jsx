@@ -10,8 +10,9 @@ function Movie( movie ) {
   })
 
   const handleDelete = async () => {
+    console.log(movie._id)
     const deletedMovie = await deleteMovie(movie._id)
-    alert(`La pelidula ${deletedMovie.name} fue eliminada correctamente`)
+    if ( deletedMovie ) alert(`La pelidula ${deletedMovie.name} fue eliminada correctamente`)
   }
   
   return (
