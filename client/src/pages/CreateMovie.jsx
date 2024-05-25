@@ -57,7 +57,7 @@ function CreateMovie() {
             </label>
             <label>
                 image
-                <input type="file" placeholder="poster" value={movie.image} onChange={handleImage}/>
+                <input type="file" placeholder="poster" onChange={handleImage}/>
             </label>
             <img src={movie.image} />
             <input type="submit" value="Crear Pelicula"/>

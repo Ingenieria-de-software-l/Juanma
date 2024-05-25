@@ -63,7 +63,6 @@ router.put("/updateMovie", async (req, res) => {
 router.delete("/deleteMovie/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        console.log(id)
         const movieFound = await Movie.findByIdAndDelete(id);
         return res.status(200).json(movieFound);
     } catch (error) {
